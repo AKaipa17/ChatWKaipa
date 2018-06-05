@@ -102,23 +102,25 @@ def main():
 			sleep(random.randint(3, 5))
 			client(ForwardMessagesRequest(from_peer=client.get_entity(PeerUser(botid)), id=[update.message.id], to_peer=client.get_entity(otryad)))
 
-		if update.message.message == "Выносливость восстановлена: ты полон сил. Вперед, на поиски приключений!" and utc_to_local(datetime.utcnow()).hour > 1:
-			sleep(random.randint(2, 4))
-			client.send_message(bot, "🗺Квесты")
-			sleep(random.randint(2, 4))
-			client.send_message(bot, "🗡ГРАБИТЬ КОРОВАНЫ")
+		if update.message.message == "Выносливость восстановлена: ты полон сил. Вперед, на поиски приключений!":
+			if utc_to_local(datetime.utcnow()).hour > 1:
+				sleep(random.randint(2, 4))
+				client.send_message(bot, "🗺Квесты")
+				sleep(random.randint(2, 4))
+				client.send_message(bot, "🗡ГРАБИТЬ КОРОВАНЫ")
+			else:
+				les(3)
 
 
 	def les(num):
 		if num>0:
+			sleep(random.randint(1, 5))
 			client.send_message(bot, "🗺Квесты")
 			sleep(random.randint(2, 4))
 			client.send_message(bot, "🌲Лес")
 			sleep(random.randint(480, 600))
 			les(num-1)
-		else:
-			break
-		
+
 
 	client.idle()
 
