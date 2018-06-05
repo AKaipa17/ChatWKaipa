@@ -103,7 +103,7 @@ def main():
 			client(ForwardMessagesRequest(from_peer=client.get_entity(PeerUser(botid)), id=[update.message.id], to_peer=client.get_entity(otryad)))
 
 		if update.message.message == "Выносливость восстановлена: ты полон сил. Вперед, на поиски приключений!":
-			if utc_to_local(datetime.utcnow()).hour > 1:
+			if utc_to_local(datetime.utcnow()).hour > 1 and utc_to_local(datetime.utcnow()).hour < 7:
 				sleep(random.randint(2, 4))
 				client.send_message(bot, "🗺Квесты")
 				sleep(random.randint(2, 4))
