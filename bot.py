@@ -95,22 +95,26 @@ def main():
 		if update.message.from_id == kaipa and "#les" in update.message.message:
 			number_of = update.message.message.split()
 			print(number_of[0])
-			les()
-			l = number_of[0]
-			for x in range(2, l):
-				print(number_of)
-				threading.Timer(random.randint(480, 600), les).start()
-
-
+			les(number_of[0])
 
 		if update.message.from_id == botid and "Твои результаты в бою" in update.message.message:
 			print(update.message.message)
 			sleep(random.randint(3, 5))
 			client(ForwardMessagesRequest(from_peer=client.get_entity(PeerUser(botid)), id=[update.message.id], to_peer=client.get_entity(otryad)))
-	def les():
+
+		if update.message.message == "Выносливость восстановлена: ты полон сил. Вперед, на поиски приключений!" and utc_to_local(datetime.utcnow()).hour > 1:
+			sleep(random.randint(2, 4))
+			client.send_message(bot, "🗺Квесты")
+			sleep(random.randint(2, 4))
+			client.send_message(bot, "🗡ГРАБИТЬ КОРОВАНЫ")
+
+
+	def les(num):
 		client.send_message(bot, "🗺Квесты")
 		sleep(random.randint(2, 4))
 		client.send_message(bot, "🌲Лес")
+		sleep(random.randint(480, 600))
+		les(num-1)
 
 	client.idle()
 
@@ -121,7 +125,7 @@ def root():
 	return 'hi'
 
 if __name__ == '__main__':
-	
+
 	backProc = Process(target = main, args=())
 	backProc.start()
 	port = int(os.environ.get('PORT', 5020))
