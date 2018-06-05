@@ -85,18 +85,19 @@ def main():
 				pin("🌹")
 
 		if "Сводки с полей" in update.message.message:
-			sleep(random.randint(2,5))
+			sleep(random.randint(2, 5))
 			client.send_message(bot, "/report")
 
 		if "/go" in update.message.message:
-			sleep(random.randint(2, 7))
+			sleep(random.randint(7, 15))
 			client.send_message(bot, "/go")
 
 		if update.message.from_id == kaipa and "#les" in update.message.message:
 			number_of = update.message.message.split()
 			print(number_of[0])
 			les()
-			for x in range(2, number_of[0]):
+			l = number_of[0]
+			for x in range(2, l):
 				print(number_of)
 				threading.Timer(random.randint(480, 600), les).start()
 
@@ -104,6 +105,7 @@ def main():
 
 		if update.message.from_id == botid and "Твои результаты в бою" in update.message.message:
 			print(update.message.message)
+			sleep(random.randint(3, 5))
 			client(ForwardMessagesRequest(from_peer=client.get_entity(PeerUser(botid)), id=[update.message.id], to_peer=client.get_entity(otryad)))
 	def les():
 		client.send_message(bot, "🗺Квесты")
@@ -119,6 +121,7 @@ def root():
 	return 'hi'
 
 if __name__ == '__main__':
+
 	backProc = Process(target = main, args=())
 	backProc.start()
 	port = int(os.environ.get('PORT', 5020))
