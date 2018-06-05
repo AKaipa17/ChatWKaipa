@@ -110,11 +110,15 @@ def main():
 
 
 	def les(num):
-		client.send_message(bot, "🗺Квесты")
-		sleep(random.randint(2, 4))
-		client.send_message(bot, "🌲Лес")
-		sleep(random.randint(480, 600))
-		les(num-1)
+		if num>0:
+			client.send_message(bot, "🗺Квесты")
+			sleep(random.randint(2, 4))
+			client.send_message(bot, "🌲Лес")
+			sleep(random.randint(480, 600))
+			les(num-1)
+		else:
+			break
+		
 
 	client.idle()
 
