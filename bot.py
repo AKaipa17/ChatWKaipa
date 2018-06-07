@@ -85,7 +85,7 @@ def main():
 				pin("🌹")
 
 		if "Сводки с полей" in update.message.message:
-			sleep(random.randint(2, 5))
+			sleep(random.randint(3, 6))
 			client.send_message(bot, "/report")
 
 		if "/go" in update.message.message:
