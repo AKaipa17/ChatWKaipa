@@ -94,8 +94,8 @@ def main():
 
 		if update.message.from_id == kaipa and "#les" in update.message.message:
 			number_of = update.message.message.split()
-			print(number_of[0])
-			les(number_of[0])
+
+			les(int(number_of[0]))
 
 		if update.message.from_id == botid and "Твои результаты в бою" in update.message.message:
 			print(update.message.message)
