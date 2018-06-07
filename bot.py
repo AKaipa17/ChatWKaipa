@@ -65,8 +65,6 @@ def main():
 
 	@client.on(events.NewMessage)
 	def attack(update):
-		if update.message.message == "test":
-			print(update)
 		if update.message.from_id == oratorID and update.message.to_id == otryad:
 			theMessage = update.message.message
 			if "⚔️🖤" in theMessage:
@@ -107,8 +105,8 @@ def main():
 			else:
 				les(3)
 
-		if "Выносливость: 1" in update.message.message:
-			les(2)
+		if update.message.message == "test":
+			client.send_message("akaipa", "tested")
 
 
 	def les(num):
