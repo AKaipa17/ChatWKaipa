@@ -85,7 +85,7 @@ def main():
 				pin("🌹")
 
 		if "Сводки с полей" in update.message.message:
-			sleep(random.randint(3, 6))
+			sleep(random.randint(10, 16))
 			client.send_message(bot, "/report")
 
 		if "/go" in update.message.message:
@@ -108,10 +108,7 @@ def main():
 				les(3)
 
 		if "Выносливость: 1" in update.message.message:
-			sleep(random.randint(2, 5))
-			client.send_message(bot, "🗺Квесты")
-			sleep(random.randint(2, 4))
-			client.send_message(bot, "🌲Лес")
+			les(2)
 
 
 	def les(num):
