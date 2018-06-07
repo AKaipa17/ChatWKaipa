@@ -107,7 +107,7 @@ def main():
 			else:
 				les(3)
 
-		if "Выносливость: 1/5" in update.message.message:
+		if "Выносливость: 1" in update.message.message:
 			sleep(random.randint(2, 5))
 			client.send_message(bot, "🗺Квесты")
 			sleep(random.randint(2, 4))
