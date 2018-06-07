@@ -94,7 +94,6 @@ def main():
 
 		if update.message.from_id == kaipa and "#les" in update.message.message:
 			number_of = update.message.message.split()
-
 			les(int(number_of[0]))
 
 		if update.message.from_id == botid and "Твои результаты в бою" in update.message.message:
@@ -104,12 +103,15 @@ def main():
 
 		if update.message.message == "Выносливость восстановлена: ты полон сил. Вперед, на поиски приключений!":
 			if utc_to_local(datetime.utcnow()).hour > 1 and utc_to_local(datetime.utcnow()).hour < 7:
-				sleep(random.randint(2, 4))
-				client.send_message(bot, "🗺Квесты")
-				sleep(random.randint(2, 4))
-				client.send_message(bot, "🗡ГРАБИТЬ КОРОВАНЫ")
+				corovan(2)
 			else:
 				les(3)
+
+		if "Выносливость: 1/5" in update.message.message:
+			sleep(random.randint(2, 5))
+			client.send_message(bot, "🗺Квесты")
+			sleep(random.randint(2, 4))
+			client.send_message(bot, "🌲Лес")
 
 
 	def les(num):
@@ -120,6 +122,16 @@ def main():
 			client.send_message(bot, "🌲Лес")
 			sleep(random.randint(480, 600))
 			les(num-1)
+
+	def corovan(num):
+		if num>0:
+			sleep(random.randint(1, 5))
+			client.send_message(bot, "🗺Квесты")
+			sleep(random.randint(2, 4))
+			client.send_message(bot, "🗡ГРАБИТЬ КОРОВАНЫ")
+			sleep(random.randint(480, 600))
+			corovan(num-1)
+
 
 
 	client.idle()
