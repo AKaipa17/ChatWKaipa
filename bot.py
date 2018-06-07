@@ -106,7 +106,7 @@ def main():
 				les(3)
 
 		if update.message.message == "test":
-			client.send_message("akaipa", "tested")
+			les(1)
 
 
 	def les(num):
@@ -126,9 +126,6 @@ def main():
 			client.send_message(bot, "🗡ГРАБИТЬ КОРОВАНЫ")
 			sleep(random.randint(480, 600))
 			corovan(num-1)
-
-
-
 	client.idle()
 
 
